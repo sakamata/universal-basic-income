@@ -13,14 +13,14 @@ services:
     build: ./docker/php
     volumes:
       # jsFMにした際は修正
-      - ../app/laravel-app:/var/www/html/app/laravel-app
+      - ./laravel:/var/www/html
     depends_on:
       - mysql
   mysql:
     image: mysql:8.0
     environment:
-      MYSQL_DATABASE: sample
-      MYSQL_USER: user
+      MYSQL_DATABASE: ubi
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
     ports:
