@@ -13,4 +13,11 @@ RUN apt-get update \
     && apt-get install -y libpq-dev \
     && docker-php-ext-install pdo_mysql pdo_pgsql
 
+# php.ini extra settings
+RUN echo "file_uploads = On\n" \
+         "memory_limit = 500M\n" \
+         "upload_max_filesize = 50M\n" \
+         "post_max_size = 50M\n" \
+         > /usr/local/etc/php/conf.d/extra.ini
+
 WORKDIR /var/www/html
