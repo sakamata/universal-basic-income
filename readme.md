@@ -1,6 +1,6 @@
 # universal-basic-income
 
-## 構成
+## Constitution
 
 - php 7.4-fpm
 - nginx 1.15.6
@@ -11,9 +11,10 @@
 ```
 universal-basic-income
 ├docker
+├docs
 └laravel
 ```
 
-## コンセプト
+## Concept
 
-[日本語](docs/ja/concept.md)
+[Japanese](docs/ja/concept.md)
