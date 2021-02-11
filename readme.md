@@ -13,3 +13,7 @@ universal-basic-income
 ├docker
 └laravel
 ```
+
+## コンセプト
+
+[日本語](docs/ja/concept.md)
