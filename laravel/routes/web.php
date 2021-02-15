@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+if (in_array(env('APP_ENV'), ['dev', 'local'], true)) {
+    Route::get('/phpinfo', function () {
+        return view('phpinfo');
+    });
+}
