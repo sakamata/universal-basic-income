@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->unsignedBigInteger('now_point')->default(config('const.default_point'))->comment('現在ポイント');
             $table->unsignedBigInteger('sharing_after_point')->default(config('const.default_point'))->comment('分配直後の現在ポイント,計算,バックアップ等に利用');
+            $table->string('locale', 8)->nullable()->comment('ユーザー使用言語');
             $table->string('google_email')->unique()->nullable()->comment('gmail address');
             $table->timestamps();
             $table->softDeletes();

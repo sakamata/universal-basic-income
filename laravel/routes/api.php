@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\SandboxController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Api\Point\SendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,18 @@ use App\Http\Controllers\AuthController;
 
 
 // ログイン
-Route::post('/login', [AuthController::class,'login']);
+Route::post('login', [AuthController::class,'login']);
 
-// ユーザー情報の取得
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('sandbox', [SandboxController::class, 'get']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    // test ユーザー情報の取得
+    Route::get('user', function (Request $request) {
+        return $request->user();
+    });
+    // ポイント付与
+    Route::prefix('point')->group(function () {
+        Route::post('/send/{unique_id}', [SendController::class, 'send'])
+            ->where('unique_id', '[0-9A-Za-z]+');
+    });
 });

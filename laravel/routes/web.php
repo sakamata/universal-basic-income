@@ -18,7 +18,12 @@ Route::get('/', function () {
 });
 
 if (in_array(env('APP_ENV'), ['dev', 'local'], true)) {
-    Route::get('/phpinfo', function () {
+    Route::get('phpinfo', function () {
         return view('phpinfo');
     });
 }
+Route::middleware(['auth'])->group(function () {
+    Route::get('auth_test', function () {
+        return view('auth_test');
+    });
+});
